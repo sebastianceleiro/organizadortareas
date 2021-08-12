@@ -1,0 +1,55 @@
+
+
+body { font-family: Verdana, Geneva, Tahoma, sans-serif ;
+     background-color:white;  
+     margin: 0px; }
+
+
+
+
+#formulario {
+     border-bottom: 2px solid rgb(63, 144, 63);
+     margin: 6px;
+     padding: 14px;
+}
+
+.formularioingreso {
+     margin: 5px ;
+}
+
+
+#Tabladetareas { 
+    
+     text-align: center;
+     width: 98%;
+     margin: 40px auto;
+     padding: 17px;
+     font-size: 13px;
+    
+    
+}
+
+#Tabladetareas tr, td { 
+    
+     padding: 5px;
+     border: 1px solid rgb(171, 171, 180) ;
+   
+    
+}
+
+
+.tarea { 
+    margin-top: 50px;
+    transition: background-color 0.8s linear 0.2s;
+    
+}
+.tarea:hover { background-color: rgb(153, 190, 161) ;}
+
+
+#filtros { 
+     width: 30%;
+     margin: auto;
+     padding: 10px;
+   
+}
+
