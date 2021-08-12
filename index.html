@@ -30,48 +30,49 @@
     <form id="formulario" class=" form-inline">
         <b>Nuevo Ingreso</b>
         <div class="form-control">
-        <input id="Tarea" size="30" placeholder="Tarea" class="formularioingreso"  >
-        <input id ="Descripcion" size="80" placeholder="Descripcion de la tarea" class="formularioingreso">
-        <br> Estado
+            <input id="Tarea" size="30" placeholder="Tarea" class="formularioingreso"  >
+            <input id ="Descripcion" size="80" placeholder="Descripcion de la tarea" class="formularioingreso">
+            <br> Estado
         <select id="Estado"  class="formularioingreso">
             <option>Pendiente</option>
             <option>En Curso </option>
             <option>Completada</option>
         </select>
-         Prioridad:
+        Prioridad:
         <select id="Prioridad"  class="formularioingreso" >
             <option>Media</option>
             <option>Baja</option>
             <option>Alta</option>
         </select>
-         Asignar a:
+        Asignar a:
         <select id="Asignacion" class="formularioingreso" >
             <option>Sin Asignar</option>
             <option>Sebastian</option>
             <option>Juan</option>
         </select>
         <input type="submit" class="formularioingreso  btn btn-dark"></input>
-        </div>
-    </form>  
-   
-        <table id="Tabladetareas">
-            <tr id="cabecera">
-                <td>ID </td>
-                <td>Tarea</td>
-                <td>Detalle</td>
-                <td>Estado</td>
-                <td>Asignado</td>
+    </div>
+</form>  
+<div id="filtros">
+<button id="eliminar" type="button" class="btn btn-success btn-sm"> Eliminar todo</button>
+<button id="eliminaruna" type="button" class="btn btn-success btn-sm"> Eliminar una tarea</button>
+<button id="filtrar" type="button" class="btn btn-success btn-sm"> Ver solo pendientes</button>
+
+</div>
+
+<table id="Tabladetareas">
+    <tr id="cabecera">
+        <td>ID </td>
+        <td>Tarea</td>
+        <td>Detalle</td>
+        <td>Estado</td>
+        <td>Asignado</td>
                 <td>Prioridad</td>
                 <td>Creado</td>
                 <td>Modificar</td>
             </tr>
           
         </table>
-        <div id="filtros">
-        <button id="eliminar" type="button" class="btn btn-success btn-sm"> Eliminar todas las tareas</button>
-        <button id="filtrar" type="button" class="btn btn-success btn-sm"> Filtrar  solo pendientes</button>
-        
-        </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
 
 </body>
