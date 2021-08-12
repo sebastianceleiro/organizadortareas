@@ -39,6 +39,7 @@ let asignacionformulario = document.getElementById("Asignacion") ;
 let formulario = document.getElementById("formulario") ;
 let comprobartareas ;
 let botonborrar = document.getElementById("eliminar") ;
+let botonborraruna = document.getElementById("eliminaruna") ;
 let filtrar = document.getElementById("filtrar") ;
 let resultadofiltro = [] ;
 
@@ -92,7 +93,9 @@ function mostrartareaingresada () {
     for (let tarea of totaltareas) { 
 
         let agregarAlDom = document.createElement("tr") ;
+        agregarAlDom.setAttribute("id", tarea.id);
         agregarAlDom.className = "tarea" ;
+       
         
 
 
@@ -103,7 +106,7 @@ function mostrartareaingresada () {
                                     " <td>" + tarea.asignacion +
                                     " <td>" + tarea.prioridad +
                                     " <td>" + tarea.fecha) +
-                                    " <td> Editar / Eliminar " ;
+                                    " <td> <button> Eliminar</button> " ;
 
         
      
@@ -117,15 +120,25 @@ function mostrartareaingresada () {
 /// ELIMINAR
 
 botonborrar.addEventListener("click", eliminar) ;
+botonborraruna.addEventListener("click", eliminaruna) ;
 
 function eliminar () {
-    
-    totaltareas = [] ;
-    tareasJson = JSON.stringify(totaltareas) ; // Converite objeto a JSON
-    localStorage.setItem ("Tareas", tareasJson) ;  // Guardo en LS  el JSON
-    mostrartareaingresada () ;
-    alert ("Se eliminaron las tareas guardadas") ;
+    let confirmar = confirm ("Por favor confirmar si desea eliminar TODAS las tareas") ;
+    if (confirmar == true ) {
+        totaltareas = [] ;
+        tareasJson = JSON.stringify(totaltareas) ; // Converite objeto a JSON
+        localStorage.setItem ("Tareas", tareasJson) ;  // Guardo en LS  el JSON
+        mostrartareaingresada () ;
+      
+    }
 }  ;
+
+
+function eliminaruna() {
+    let idd = parseInt(prompt ("ingrese el numero de id a borrar")) ;
+    totaltareas.splice (idd-1, 1) ;
+    mostrartareaingresada () ;
+}
 
 
 
@@ -145,8 +158,9 @@ function mostrarfiltrado () {
 for (let tarea of resultadofiltro) { 
 
    let agregarAlDom = document.createElement("tr") ;
+   agregarAlDom.setAttribute("id", tarea.id);
    agregarAlDom.className = "tarea" ;
-   
+ 
 
 
   agregarAlDom.innerHTML  =  ( " <td>" + tarea.id +
@@ -156,7 +170,7 @@ for (let tarea of resultadofiltro) {
                                " <td>" + tarea.asignacion +
                                " <td>" + tarea.prioridad +
                                " <td>" + tarea.fecha) +
-                               " <td> Editar / Eliminar " ;
+                               " <td>  <button> Eliminar</button> " ;
 
    
 
@@ -165,12 +179,3 @@ for (let tarea of resultadofiltro) {
    
 } ; }
 
-
-// Pruebas borrar cada tarea
-
-let area = document.getElementById("Tabladetareas") ;
-area.addEventListener("click", leer) ;
-
-function leer(e) { 
-    console.log (e.target)
-}
