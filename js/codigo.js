@@ -1,4 +1,5 @@
 
+/// DATOS PARA GENERAR EL ALTA DE CADA TAREA
 
 class Tarea {
     constructor (id, nombre, detalle, estado, prioridad, asignacion,fecha) {
@@ -14,50 +15,43 @@ class Tarea {
     ingresodedatos()  {
        
         this.id = totaltareas.length + 1  ;
-        this.nombre = tareaformulario.value ;
-        this.detalle = descripcionformulario.value ;
-        this.estado = Estadoformulario.value ;
-        this.prioridad = prioridadformulario.value ;
-        this.asignacion = asignacionformulario.value ;
+        this.nombre = $("#Tarea").val() ;
+        this.detalle = $("#Descripcion").val() ;
+        this.estado = $("#Estado").val() ;
+        this.prioridad = $("#Prioridad").val() ;
+        this.asignacion = $("#Asignacion").val() ;
         this.fecha = new Date ().toLocaleDateString(); ;
     }
 
 }
 
 // ---------------------------------VARIABLES
-
-
 let datosusuario ;       
 let totaltareas = [] ;   
-// Se guardan los ingresos del usuario en variables
-let tabladetareas = document.getElementById("Tabladetareas") ;
-let tareaformulario = document.getElementById("Tarea") ;
-let descripcionformulario = document.getElementById("Descripcion") ;
-let Estadoformulario = document.getElementById("Estado") ;
-let prioridadformulario = document.getElementById("Prioridad") ;
-let asignacionformulario = document.getElementById("Asignacion") ;
-let formulario = document.getElementById("formulario") ;
 let comprobartareas ;
-let botonborrar = document.getElementById("eliminar") ;
-let botonborraruna = document.getElementById("eliminaruna") ;
-let filtrar = document.getElementById("filtrar") ;
 let resultadofiltro = [] ;
 
 
 
-
+///Se comprueba al cargar pagina si hay tareas en el Local Storage
 comprobarsihaytareas() ;
-// ---- Se disparan todas las funciones al tocar el boton guardar
-formulario.addEventListener("submit", agregartareas) ; 
+
+// Funciones que se ejecutan cuando el usuario hace click
+$("#formulario").submit(agregartareas) ; 
+$("#eliminar").click(eliminar) ;
+$("#eliminaruna").click(eliminaruna) ;
+$("#filtrar").click(filtrartareas) ;
+
 
 
 
 ///// FUNCIONES ---
 
 function agregartareas(e) { 
+   
     e.preventDefault() ;
-    if (tareaformulario.value != "") /* valida que el campo tenga algo*/ {
-    
+    if ($("#Tarea").val() != "") /* valida que el campo tenga algo*/ {
+      
         datosusuario = new Tarea () ;  // Se crea el objeto con las propiedades que componen cada ingreso de tarea
         datosusuario.ingresodedatos() ;   // Se solicita el ingreso de datos que quedaran en el objeto
         totaltareas.push (datosusuario) ;  // Se guarda el objeto en un array que contiene todas las tareas
@@ -80,47 +74,35 @@ function comprobarsihaytareas()  {
 
 }
 
+// Se borran los datos de los formularios al guardar tarea
 function borrarvalues () {
-     tareaformulario.value = "" ;
-     descripcionformulario.value = "" ;
+     $("#Tarea").val("")   ;
+     $("#Descripcion").val("") ;
 
 }
 
+
+//Arma la tabla de tareas luego de cada modificacion
 function mostrartareaingresada () {    
-        
-    tabladetareas.innerHTML = 
-         "<tr><td>ID </td><td>Tarea</td><td>Detalle</td><td>Estado</td><td>Asignado</td><td>Prioridad</td><td>Creado</td><td>Modificar</td> " ; 
+    armadotablasuperior();
+    
     for (let tarea of totaltareas) { 
 
-        let agregarAlDom = document.createElement("tr") ;
-        agregarAlDom.setAttribute("id", tarea.id);
-        agregarAlDom.className = "tarea" ;
-       
-        
-
-
-       agregarAlDom.innerHTML  =  ( " <td>" + tarea.id +
-                                    " <td>" + tarea.nombre +
-                                    " <td>" + tarea.detalle +
-                                    " <td>" + tarea.estado + 
-                                    " <td>" + tarea.asignacion +
-                                    " <td>" + tarea.prioridad +
-                                    " <td>" + tarea.fecha) +
-                                    " <td> <button> Eliminar</button> " ;
-
-        
-     
+        //agregarAlDom.setAttribute("id", tarea.id);
     
-                                    tabladetareas.appendChild(agregarAlDom);    
-        
+        $("#Tabladetareas").append ('<tr class="tarea"> <td>'  + tarea.id + 
+        " <td>" + tarea.nombre +
+        " <td>" + tarea.detalle +
+        " <td>" + tarea.estado + 
+        " <td>" + tarea.asignacion +
+        " <td>" + tarea.prioridad +
+        " <td>" + tarea.fecha +
+        " <td> <button> Editar</button> " ) ;
+ 
      } ; }
 
 
 
-/// ELIMINAR
-
-botonborrar.addEventListener("click", eliminar) ;
-botonborraruna.addEventListener("click", eliminaruna) ;
 
 function eliminar () {
     let confirmar = confirm ("Por favor confirmar si desea eliminar TODAS las tareas") ;
@@ -137,14 +119,15 @@ function eliminar () {
 function eliminaruna() {
     let idd = parseInt(prompt ("ingrese el numero de id a borrar")) ;
     totaltareas.splice (idd-1, 1) ;
+    tareasJson = JSON.stringify(totaltareas) ; // Converite objeto a JSON
+    localStorage.setItem ("Tareas", tareasJson) ;  // Guardo en LS  el JSON
     mostrartareaingresada () ;
-}
+} ;
 
 
 
 /// FILTRADO
 
-filtrar.addEventListener("click", filtrartareas) ;
 
 function filtrartareas () {
     resultadofiltro = totaltareas.filter ( pendientes => pendientes.estado == "Pendiente") ;
@@ -153,29 +136,34 @@ function filtrartareas () {
 
 
 function mostrarfiltrado () {
-    tabladetareas.innerHTML = 
-    "<tr><td>ID </td><td>Tarea</td><td>Detalle</td><td>Estado</td><td>Asignado</td><td>Prioridad</td><td>Creado</td><td>Modificar</td> " ; 
+    armadotablasuperior () 
 for (let tarea of resultadofiltro) { 
 
-   let agregarAlDom = document.createElement("tr") ;
-   agregarAlDom.setAttribute("id", tarea.id);
-   agregarAlDom.className = "tarea" ;
- 
-
-
-  agregarAlDom.innerHTML  =  ( " <td>" + tarea.id +
-                               " <td>" + tarea.nombre +
-                               " <td>" + tarea.detalle +
-                               " <td>" + tarea.estado + 
-                               " <td>" + tarea.asignacion +
-                               " <td>" + tarea.prioridad +
-                               " <td>" + tarea.fecha) +
-                               " <td>  <button> Eliminar</button> " ;
-
-   
-
-
-                               tabladetareas.appendChild(agregarAlDom);    
+    $("#Tabladetareas").append ('<tr class="tarea"> <td>'  + tarea.id + 
+    " <td>" + tarea.nombre +
+    " <td>" + tarea.detalle +
+    " <td>" + tarea.estado + 
+    " <td>" + tarea.asignacion +
+    " <td>" + tarea.prioridad +
+    " <td>" + tarea.fecha +
+    " <td> <button> Editar</button> " ) ;
    
 } ; }
+
+
+function armadotablasuperior () 
+{
+    $("#Tabladetareas").empty(); 
+    $("#Tabladetareas").append ("<tr id'cabecera'> " +
+    "<td>ID </td> " +
+    "<td>Tarea</td>" +
+    "<td>Detalle</td>" +
+    "<td>Estado</td>"+
+    "<td>Asignado</td>"+
+    "<td>Prioridad</td>"+
+    "<td>Creado</td>"+
+    "<td>Modificar</td>"+
+    "</tr> ") ;
+
+}
 
