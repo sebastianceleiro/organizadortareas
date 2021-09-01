@@ -1,55 +1,62 @@
 
 
 body { font-family: Verdana, Geneva, Tahoma, sans-serif ;
-     background-color:white;  
+     background-color:  white;  
      margin: 0px; }
 
 
 
-
 #formulario {
+  
      border-bottom: 2px solid rgb(63, 144, 63);
-     margin: 6px;
+     margin: auto;
      padding: 14px;
 }
 
 .formularioingreso {
      margin: 5px ;
+   
 }
 
+#filtros { 
+     padding: 10px;
+     width: auto;
+     margin: auto;
+     text-align: center;
+} 
 
-#Tabladetareas { 
+
+#tablaDeTareas { 
     
      text-align: center;
-     width: 98%;
+     width: 90%;
      margin: 40px auto;
-     padding: 17px;
+     padding: 10px;
      font-size: 13px;
-    
-    
+     border: 1px solid rgb(171, 171, 180) ;
 }
 
-#Tabladetareas tr, td { 
+
+
+#tablaDeTareas tr, td { 
     
-     padding: 5px;
-     border: 1px solid rgb(171, 171, 180) ;
-   
+     padding: 3px;
+     border: 0px solid rgb(171, 171, 180) ;
     
 }
 
 
 .tarea { 
     margin-top: 50px;
-    transition: background-color 0.8s linear 0.2s;
+    transition: background-color 0.6s linear 0.2s;
     
 }
-.tarea:hover { background-color: rgb(153, 190, 161) ;}
+.tarea:hover { background-color: rgb(241, 218, 142) ;}
 
-
-#filtros { 
-     width: 40%;
-     margin: auto;
-     padding: 10px;
-   
+#cabecera {
+     font-weight: bold;
+     font-size: 15px;
+     background-color:rgb(167, 199, 172) ;
+    
 }
 
