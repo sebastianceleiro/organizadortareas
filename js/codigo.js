@@ -173,6 +173,7 @@ function editarTarea(e) {
     modoEdicion = true ;
     idAEditar = e.target.id ;
     $("#tituloFormulario").text("Modificar Tarea");
+    ocultarIngresos() ;
 }
 
 // Funciones que se ejecutan cuando el usuario hace click
