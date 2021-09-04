@@ -92,14 +92,14 @@ function mostrarTareaIngresada () {
 
 // Se borran los datos de los formularios al guardar tarea
 function borrarValues () {
-    $("#tarea").val("")   ;
+    $("#tarea").val("") ;
     $("#descripcion").val("") ;
 }
 
 function agregarTareas(e) { 
    
     e.preventDefault() ;
-    if ($("#tarea").val() != "" & (modoEdicion == false)) /* valida que el campo tenga algo*/ {
+    if ($("#tarea").val() != "" & (modoEdicion == false)) {
       
         datosUsuario = new Tarea ();  // Se crea el objeto con las propiedades que componen cada ingreso de tarea
         datosUsuario.ingresoDeDatos();   // Se solicita el ingreso de datos que quedaran en el objeto
@@ -109,8 +109,7 @@ function agregarTareas(e) {
     let tareasJson = JSON.stringify(totalTareas); // Converite objeto a JSON
     localStorage.setItem ("tareas", tareasJson);  // Guardo en LS  el JSON
 }   else if ($("#tarea").val() == "" ) { alert ("Por favor ingrese el nombre de la tarea" );  } ;
-    if (modoEdicion == true) // Se reemplaza elemento si se edita
-    {
+    if (modoEdicion == true) {
         totalTareas[idAEditar].nombre = $("#tarea").val();
         totalTareas[idAEditar].detalle = $("#descripcion").val();
         totalTareas[idAEditar].estado = $("#estado").val();
@@ -118,11 +117,11 @@ function agregarTareas(e) {
         totalTareas[idAEditar].asignacion = $("#asignacion").val();
         mostrarTareaIngresada(); // Se muestra todo el listado de tareas ingresado 
         borrarValues ();
-        modoEdicion == false;
+        modoEdicion = false;
         let tareasJson = JSON.stringify(totalTareas); // Converite objeto a JSON
         localStorage.setItem ("tareas", tareasJson);  // Guardo en LS  el JSO
         $("#tituloFormulario").text("Nuevo ingreso");
-        }
+        };
 }
 
 
