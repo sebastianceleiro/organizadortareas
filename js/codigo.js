@@ -20,7 +20,7 @@ class Tarea {
         this.estado = $("#estado").val() ;
         this.prioridad = $("#prioridad").val() ;
         this.asignacion = $("#asignacion").val() ;
-        this.fecha = new Date ().toLocaleDateString(); ;
+        this.fecha = new Date ().toLocaleDateString() ; 
     } 
 }
 
@@ -46,12 +46,12 @@ function lecturaUsuarios () {
         };
     }); 
 } 
-//                                 FUNCIONES 
-
-
+                                 
 function  armadoTablaSuperior () 
 {
     $("#tablaDeTareas").empty(); 
+    if (totalTareas == "") { $("#tablaDeTareas").append ("No hay tareas ingreasadas")}
+    else {
     $("#tablaDeTareas").append ("<tr id='cabecera'> " +
     "<td>ID </td> " +
     "<td>Tarea</td>" +
@@ -62,7 +62,7 @@ function  armadoTablaSuperior ()
     "<td>Creado</td>"+
     "<td>Modificar</td>"+
     "</tr> ") ;
-
+    }
 } ;
 
 //Arma la tabla de tareas luego de cada modificacion
@@ -110,24 +110,27 @@ function agregarTareas(e) {
     localStorage.setItem ("tareas", tareasJson);  // Guardo en LS  el JSON
 }   else if ($("#tarea").val() == "" ) { alert ("Por favor ingrese el nombre de la tarea" );  } ;
     if (modoEdicion == true) {
-        totalTareas[idAEditar].nombre = $("#tarea").val();
-        totalTareas[idAEditar].detalle = $("#descripcion").val();
-        totalTareas[idAEditar].estado = $("#estado").val();
-        totalTareas[idAEditar].prioridad = $("#prioridad").val();
-        totalTareas[idAEditar].asignacion = $("#asignacion").val();
-        mostrarTareaIngresada(); // Se muestra todo el listado de tareas ingresado 
-        borrarValues ();
-        modoEdicion = false;
-        let tareasJson = JSON.stringify(totalTareas); // Converite objeto a JSON
-        localStorage.setItem ("tareas", tareasJson);  // Guardo en LS  el JSO
-        $("#tituloFormulario").text("Nuevo ingreso");
-        };
+        guardarEdicion() ;
 }
 
+function guardarEdicion () {   // Guarda en el Array, pero en un elemento ya existente
+    totalTareas[idAEditar].nombre = $("#tarea").val();
+    totalTareas[idAEditar].detalle = $("#descripcion").val();
+    totalTareas[idAEditar].estado = $("#estado").val();
+    totalTareas[idAEditar].prioridad = $("#prioridad").val();
+    totalTareas[idAEditar].asignacion = $("#asignacion").val();
+    mostrarTareaIngresada(); // Se muestra todo el listado de tareas ingresado 
+    borrarValues ();
+    modoEdicion = false;
+    let tareasJson = JSON.stringify(totalTareas); // Converite objeto a JSON
+    localStorage.setItem ("tareas", tareasJson);  // Guardo en LS  el JSO
+    $("#tituloFormulario").text("Nuevo ingreso");
+    };
+}
 
 function comprobarSiHayTareas()  {
     let comprobarTareas = JSON.parse(localStorage.getItem("tareas"));
-    if (comprobarTareas != null) {
+    if (comprobarTareas != undefined) {
         totalTareas = comprobarTareas;
         mostrarTareaIngresada ();
   }

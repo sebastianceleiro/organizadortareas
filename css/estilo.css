@@ -7,7 +7,7 @@ body { font-family: Verdana, Geneva, Tahoma, sans-serif ;
 
 
 #formulario {
-  
+     display: none ;
      border-bottom: 2px solid rgb(63, 144, 63);
      margin: auto;
      padding: 14px;
