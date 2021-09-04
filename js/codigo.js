@@ -124,7 +124,7 @@ function guardarEdicion () {   // Guarda en el Array, pero en un elemento ya exi
     modoEdicion = false;
     let tareasJson = JSON.stringify(totalTareas); // Converite objeto a JSON
     localStorage.setItem ("tareas", tareasJson);  // Guardo en LS  el JSO
-    $("#tituloFormulario").text("Nuevo ingreso");
+    $("#staticBackdropLabel").text("Ingreso tarea");
     };
 }
 
@@ -174,7 +174,7 @@ function editarTarea(e) {
 
     modoEdicion = true ;
     idAEditar = e.target.id ;
-    $("#tituloFormulario").text("Modificar Tarea");
+    $("#staticBackdropLabel").text("Modificar Tarea");
 
 }
 
@@ -182,8 +182,8 @@ function editarTarea(e) {
 
 $("#formulario").submit(agregarTareas);   
 $("#eliminar").click(eliminar);
-$("#filtrar").click(filtrarTareas);
-$(".botonEliminar").click(eliminarUna); // Esta linea no funciona
+$("#formularioFiltros").submit(filtrarTareas);
+$(".botonEliminar").click(eliminarUna); 
 $(".botonEditar").click(editarTarea);
 
 /// FILTRADO
@@ -207,8 +207,9 @@ for (let tarea of resultadoFiltro) {
 } ;      $(".botonEliminar").click(eliminarUna); }
 
 
-function filtrarTareas () {
-    resultadoFiltro = totalTareas.filter ( pendientes => pendientes.estado == "Pendiente") ;
+function filtrarTareas (e) {
+    e.preventDefault() ;
+    resultadoFiltro = totalTareas.filter ( pendientes => pendientes.estado == $("#filtroEstado").val()) ;
     mostrarFiltrado ();
 };
 

@@ -27,7 +27,8 @@
           
             <p class="opcionesMenu" data-bs-toggle="modal" data-bs-target="#staticBackdrop" >Agregar una tarea</p>
             <p class="opcionesMenu" id="eliminar">Eliminar todo</p>
-            <p class="opcionesMenu"id="filtrar">Filtrar por pendientes</p>
+            <p class="opcionesMenu" data-bs-toggle="modal" data-bs-target="#filtros">Filtrar</p>
+            <p class="opcionesMenu"id="idadefinir">Ver todo</p>
         </nav>
     </header>
    
@@ -40,8 +41,8 @@
             </div>
             <div class="modal-body">
                 <form id="formulario">
-                    <input id="tarea" size="30" placeholder="Tarea" class="elementosFormulario">
-                    <input id ="descripcion" size="70" placeholder="Descripcion de la tarea" class="elementosFormulario">
+                    Titulo: <br> <input id="tarea" size="30" placeholder="Tema a trabajar" class="elementosFormulario">
+                    <br> Descripcion <br> <input id ="descripcion" size="70" placeholder="Esta informacion es opcional" class="elementosFormulario">
                     <br> Estado
                     <select id="estado"  class="elementosFormulario">
                         <option>Pendiente</option>
@@ -57,8 +58,33 @@
                     Asignar a:
                     <select id="asignacion" class="elementosFormulario" >
                     </select>
+                    <br>
                     <input type="submit" class="formularioingreso  btn btn-dark" data-bs-dismiss="modal"></input>
                     <button type="button" class="btn btn-success btn-dark" data-bs-dismiss="modal">Cerrar</button>
+                </form>    
+            </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="filtros" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Selector de Filtros</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="formularioFiltros">
+                Seleccione su filtro
+                <br>Por estado
+                <select id="filtroEstado"  class="elementosFormulario">
+                    <option>Pendiente</option>
+                    <option>En Curso</option>
+                    <option>Completada</option>
+                </select>
+                <input type="submit" class="formularioingreso  btn btn-dark" data-bs-dismiss="modal"></input>
+                <button type="button" class="btn btn-success btn-dark" data-bs-dismiss="modal">Cerrar</button>
                 </form>    
             </div>
             </div>
