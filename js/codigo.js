@@ -133,6 +133,8 @@ function comprobarSiHayTareas()  {
     if (comprobarTareas != undefined) {
         totalTareas = comprobarTareas;
         mostrarTareaIngresada ();
+  } else {
+    mostrarTareaIngresada ();
   }
 }
 
