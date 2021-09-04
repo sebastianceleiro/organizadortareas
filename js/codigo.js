@@ -79,7 +79,7 @@ function mostrarTareaIngresada () {
        " <td>" + tarea.asignacion +
        " <td>" + tarea.prioridad +
        " <td>" + tarea.fecha +
-       ' <td> <button class="botonEliminar btn btn-success btn-sm" id=id>Eliminar</button> <button class="botonEditar btn btn-success btn-sm" id=id2>Editar</button>' ) ;
+       ' <td> <button class="botonEliminar btn btn-success btn-sm" id=id>Eliminar</button> <button class="botonEditar btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#staticBackdrop" id=id2>Editar</button>' ) ;
 
        $("#id").attr("id", tarea.id) ;
        $("#id2").attr("id", tarea.id) ;
@@ -173,16 +173,15 @@ function editarTarea(e) {
     modoEdicion = true ;
     idAEditar = e.target.id ;
     $("#tituloFormulario").text("Modificar Tarea");
-    ocultarIngresos() ;
+
 }
 
 // Funciones que se ejecutan cuando el usuario hace click
 
-$("#formulario").submit(agregarTareas); 
+$("#formulario").submit(agregarTareas);   
 $("#eliminar").click(eliminar);
 $("#filtrar").click(filtrarTareas);
 $(".botonEliminar").click(eliminarUna); // Esta linea no funciona
-$("#ocultar").click(ocultarIngresos);
 $(".botonEditar").click(editarTarea);
 
 /// FILTRADO
@@ -198,7 +197,7 @@ for (let tarea of resultadoFiltro) {
        " <td>" + tarea.asignacion +
        " <td>" + tarea.prioridad +
        " <td>" + tarea.fecha +
-       ' <td> <button class="botonEliminar btn btn-success btn-sm" id=id>Eliminar</button> <button class="botonEditar btn btn-success btn-sm" id=id2>Editar</button>' ) ;
+       ' <td> <button class="botonEliminar btn btn-success btn-sm" id=id>Eliminar</button> <button class="botonEditar btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#staticBackdrop" id=id2>Editar</button>' ) ;
 
        $("#id").attr("id", tarea.id);
        $("#id2").attr("id", tarea.id);
@@ -210,11 +209,6 @@ function filtrarTareas () {
     resultadoFiltro = totalTareas.filter ( pendientes => pendientes.estado == "Pendiente") ;
     mostrarFiltrado ();
 };
-
-function ocultarIngresos() {
-   $("#formulario").slideToggle(1000) ;
-  }
- 
 
 ///Se comprueba al cargar pagina si hay tareas en el Local Storage
 comprobarSiHayTareas();

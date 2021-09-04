@@ -4,26 +4,25 @@ body { font-family: Verdana, Geneva, Tahoma, sans-serif ;
      background-color:  white;  
      margin: 0px; }
 
-
-
-#formulario {
-     display: none ;
-     border-bottom: 2px solid rgb(63, 144, 63);
-     margin: auto;
-     padding: 14px;
+#menuOpciones {
+     background-color: rgb(204, 204, 204);
+     margin: 0px;
 }
 
-.formularioingreso {
-     margin: 5px ;
-   
-}
-
-#filtros { 
-     padding: 10px;
-     width: auto;
-     margin: auto;
+.opcionesMenu {
+     display: inline-block ;
+     padding-right: 10px;
+     padding-left: 10px;
      text-align: center;
-} 
+     margin: auto;
+}
+
+.opcionesMenu:hover { background-color: rgb(240, 196, 93);
+                      cursor:pointer;}
+
+.elementosFormulario {
+    margin: 10px;
+}
 
 
 #tablaDeTareas { 
@@ -35,7 +34,6 @@ body { font-family: Verdana, Geneva, Tahoma, sans-serif ;
      font-size: 13px;
      border: 1px solid rgb(171, 171, 180) ;
 }
-
 
 
 #tablaDeTareas tr, td { 
@@ -56,7 +54,7 @@ body { font-family: Verdana, Geneva, Tahoma, sans-serif ;
 #cabecera {
      font-weight: bold;
      font-size: 15px;
-     background-color:rgb(167, 199, 172) ;
+     background-color:rgb(199, 206, 200) ;
     
 }
 
