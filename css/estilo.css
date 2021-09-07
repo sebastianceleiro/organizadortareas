@@ -1,7 +1,8 @@
 
 
-body { font-family: Verdana, Geneva, Tahoma, sans-serif ;
-     background-color:  white;  
+ body { font-family: Verdana, Geneva, Tahoma, sans-serif ;
+     background-image: url("../img/fondo.jpg")  ; 
+     background-size: cover;
      margin: 0px; }
 
 #menuOpciones {
@@ -28,21 +29,19 @@ body { font-family: Verdana, Geneva, Tahoma, sans-serif ;
 #formulario { text-align: left;}
 
 #tablaDeTareas { 
-    
+     background-color: white;
      text-align: center;
      width: 90%;
      margin: 40px auto;
      padding: 10px;
      font-size: 13px;
      border: 1px solid rgb(171, 171, 180) ;
+   
 }
 
-
 #tablaDeTareas tr, td { 
-    
      padding: 3px;
      border: 0px solid rgb(171, 171, 180) ;
-    
 }
 
 
