@@ -28,7 +28,6 @@
             <p class="opcionesMenu" data-bs-toggle="modal" data-bs-target="#staticBackdrop" >Agregar una tarea</p>
             <p class="opcionesMenu" id="eliminar">Eliminar todo</p>
             <p class="opcionesMenu" data-bs-toggle="modal" data-bs-target="#filtros">Filtrar</p>
-            <p class="opcionesMenu"id="idadefinir">Ver todo</p>
         </nav>
     </header>
    
@@ -83,8 +82,19 @@
                     <option>En Curso</option>
                     <option>Completada</option>
                 </select>
-                <input type="submit" class="formularioingreso  btn btn-dark" data-bs-dismiss="modal"></input>
-                <button type="button" class="btn btn-success btn-dark" data-bs-dismiss="modal">Cerrar</button>
+                <button id="botonFiltrarEstado" class="formularioingreso  btn btn-dark" data-bs-dismiss="modal">Buscar</button>
+                <br>Por nivel de Prioridad
+                <select id="filtroPrioridad"  class="elementosFormulario">
+                    <option>Alta</option>
+                    <option>Media </option>
+                    <option>Baja</option>
+                </select>
+                <button id="botonFiltrarPrioridad" class="formularioingreso  btn btn-dark" data-bs-dismiss="modal">Buscar</button>
+                <br>Por usuario:</vr>
+                <select id="asignacionFiltro" class="elementosFormulario" >
+                </select>
+                <button id="botonFiltrarUsuario" class="formularioingreso  btn btn-dark" data-bs-dismiss="modal">Buscar</button>
+
                 </form>    
             </div>
             </div>

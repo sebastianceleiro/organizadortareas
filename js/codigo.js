@@ -42,6 +42,7 @@ function lecturaUsuarios () {
             console.log (listadoUsuarios);
             for (let usuario of listadoUsuarios) {
             $("#asignacion").append("<option>" + usuario.nombre + "</option>");
+            $("#asignacionFiltro").append("<option>" + usuario.nombre + "</option>");
             };
         };
     }); 
@@ -182,7 +183,9 @@ function editarTarea(e) {
 
 $("#formulario").submit(agregarTareas);   
 $("#eliminar").click(eliminar);
-$("#formularioFiltros").submit(filtrarTareas);
+$("#botonFiltrarEstado").click(filtrarTareas);
+$("#botonFiltrarPrioridad").click(filtrarTareas);
+$("#botonFiltrarUsuario").click(filtrarTareas);
 $(".botonEliminar").click(eliminarUna); 
 $(".botonEditar").click(editarTarea);
 
@@ -209,7 +212,19 @@ for (let tarea of resultadoFiltro) {
 
 function filtrarTareas (e) {
     e.preventDefault() ;
-    resultadoFiltro = totalTareas.filter ( pendientes => pendientes.estado == $("#filtroEstado").val()) ;
+    switch (e.target.id) {
+        case "botonFiltrarEstado":
+            resultadoFiltro = totalTareas.filter ( filtro => filtro.estado == $("#filtroEstado").val()) ;
+            break;
+        case "botonFiltrarPrioridad":
+            resultadoFiltro = totalTareas.filter ( filtro => filtro.prioridad == $("#filtroPrioridad").val()) ;
+            break;
+        case "botonFiltrarUsuario":
+            resultadoFiltro = totalTareas.filter ( filtro => filtro.asignacion == $("#asignacionFiltro").val()) ;
+            break;
+        default :
+            console.log ("error") ;
+    };
     mostrarFiltrado ();
 };
 
