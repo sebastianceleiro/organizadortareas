@@ -22,9 +22,10 @@ body { font-family: Verdana, Geneva, Tahoma, sans-serif ;
 
 .elementosFormulario {
     margin: 10px;
+
 }
 
-#formulario { text-align: center;}
+#formulario { text-align: left;}
 
 #tablaDeTareas { 
     
