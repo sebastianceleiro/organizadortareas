@@ -50,7 +50,7 @@ function lecturaUsuarios () {
 function  armadoTablaSuperior () {
     $("#tablaDeTareas").empty(); 
     if (totalTareas == "") { 
-        $("#tablaDeTareas").append ("No hay tareas ingreasadas")}
+        $("#tablaDeTareas").append ("No hay tareas ingresadas")}
     else {
         $("#tablaDeTareas").append ("<tr id='cabecera'> " +
         "<td>ID </td> " +
