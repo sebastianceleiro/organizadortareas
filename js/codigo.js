@@ -180,6 +180,7 @@ $("#botonFiltrarPrioridad").click(filtrarTareas);
 $("#botonFiltrarUsuario").click(filtrarTareas);
 $(".botonEliminar").click(eliminarUna); 
 $(".botonEditar").click(editarTarea);
+$("#quitarFiltros").click(mostrarTareaIngresada);
 
 /// FILTRADO
 
@@ -223,3 +224,4 @@ function filtrarTareas (e) {
 ///Se comprueba al cargar pagina si hay tareas en el Local Storage
 comprobarSiHayTareas();
 lecturaUsuarios();
+$("#titulo").slideDown(1000);
